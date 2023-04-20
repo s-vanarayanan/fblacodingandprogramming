@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Students</title>
+    <style>
+      /* Style for the navigation bar */
+      .navbar {
+        overflow: hidden;
+        background-color: #333;
+      }
+      .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      /* Style for the overall header */
+      .header {
+        background-color: #f1f1f1;
+        text-align: center;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Overall header -->
+    <div class="header">
+      <h1>Add Students</h1>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <a href="StudentInvolvementTracker.html">Home</a>
+        <a href="add_students.html">Add Students</a>
+        <a href="attend_activities.html">Attend Activities</a>
+        <a href="get_points.html">Get Points</a>
+        <a href="see_prizes.html">See Prizes</a>
+    </div>
+
+    <!-- Page Information -->
+    <div style="padding:20px">
+      <h3>Add Students Here!</h3>
+      <p>Please input the student name and grade to add them to the school!</p>
+    </div>
+
+    <!-- Form that gets student name through text input -->
+    <form>
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <!-- Gets student grade through multiple choice field -->
+        <label>Grade:</label><br>
+        <input type="radio" id="grade9" name="grade" value="9">
+        <label for="grade9">9</label><br>
+        <input type="radio" id="grade10" name="grade" value="10">
+        <label for="grade10">10</label><br>
+        <input type="radio" id="grade11" name="grade" value="11">
+        <label for="grade11">11</label><br>
+        <input type="radio" id="grade12" name="grade" value="12">
+        <label for="grade12">12</label><br><br>
+      
+        <!-- clicks button to save data -->
+        <button type="submit" onclick="saveData()">Submit</button>
+      </form>
+      
+      <script>
+       /*Function to save data */
+        function saveData() {
+          /*Saves name and grade*/
+          const name = document.getElementById("name").value;
+          const grade = document.querySelector('input[name="grade"]:checked').value;
+      
+          localStorage.setItem("studentName", name);
+          localStorage.setItem("studentGrade", grade);
+            
+          /*Displays alert when data is saved*/
+          alert("Data saved successfully!");
+        }
+      </script>
+  </body>
+</html>

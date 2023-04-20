@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>See Prizes</title>
+    <style>
+      /* Style for the navigation bar */
+      .navbar {
+        overflow: hidden;
+        background-color: #333;
+      }
+      .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      /* Style for the overall header */
+      .header {
+        background-color: #f1f1f1;
+        text-align: center;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Overall header -->
+    <div class="header">
+      <h1>See Prizes</h1>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+      <a href="StudentInvolvementTracker.html">Home</a>
+      <a href="add_students.html">Add Students</a>
+      <a href="attend_activities.html">Attend Activities</a>
+      <a href="get_points.html">Get Points</a>
+      <a href="see_prizes.html">See Prizes</a>
+    </div>
+
+    <!DOCTYPE html>
+<html>
+  <body>
+    <h1>Random Winner Generator</h1>
+    <form>
+      <label for="grade">Select a grade:</label>
+      <select id="grade" name="grade">
+        <option value="9">Grade 9</option>
+        <option value="10">Grade 10</option>
+        <option value="11">Grade 11</option>
+        <option value="12">Grade 12</option>
+      </select>
+      <br><br>
+      <button type="button" onclick="pickWinner()">Pick a winner</button>
+      <br><br>
+      <button type="button" onclick="pickOverallWinner()">Get Overall Winner</button>
+    </form>
+    <div id="winner"></div>
+    <div id="overall-winner"></div>
+    <script>
+      var winners = [];
+
+      function pickWinner() {
+        // Get the selected grade
+        var grade = document.getElementById("grade").value;
+        
+        // Get all the students in the selected grade
+        var students = getStudentsByGrade(grade);
+        
+        // Pick a random winner from the students
+        var winner = students[Math.floor(Math.random() * students.length)];
+        
+        // Add the winner to the list of winners
+        winners.push(winner);
+        
+        // Display the winner
+        document.getElementById("winner").innerHTML = "The winner is " + winner + "!";
+      }
+      
+      function pickOverallWinner() {
+        // Pick a random winner from the list of winners
+        var overallWinner = winners[Math.floor(Math.random() * winners.length)];
+        
+        // Assign a random number of points to the overall winner
+        var points = Math.floor(Math.random() * 101);
+        
+        // Display the overall winner and points
+        document.getElementById("overall-winner").innerHTML = "The overall winner is " + overallWinner + ", with " + points + " points!";
+      }
+      
+      function getStudentsByGrade(grade) {
+        var students = [
+            "Alice, 11",
+            "Bob, 11",
+            "Charlie, 12",
+            "Dave, 12",
+            "Emily, 9",
+            "Frank, 9",
+            "Grace, 10",
+            "Henry, 10",
+            "Isabel, 11",
+            "John, 12"
+        ];
+
+        switch (grade) {
+            case "9":
+                return students.filter(student => student.includes("9")).map(student => student.split(",")[0]);
+            case "10":
+                return students.filter(student => student.includes("10")).map(student => student.split(",")[0]);
+            case "11":
+                return students.filter(student => student.includes("11")).map(student => student.split(",")[0]);
+            case "12":
+                return students.filter(student => student.includes("12")).map(student => student.split(",")[0]);
+            default:
+            return [];
+        }
+      }
+    </script>
+  </body>
+</html>
+
+  </body>
+</html>

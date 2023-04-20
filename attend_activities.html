@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Attend Activities</title>
+    <style>
+      /* Style for the navigation bar */
+      .navbar {
+        overflow: hidden;
+        background-color: #333;
+      }
+      .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      /* Style for the overall header */
+      .header {
+        background-color: #f1f1f1;
+        text-align: center;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Overall header -->
+    <div class="header">
+      <h1>Attend Activities</h1>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <a href="StudentInvolvementTracker.html">Home</a>
+        <a href="add_students.html">Add Students</a>
+        <a href="add_activities.html">Attend Activities</a>
+        <a href="get_points.html">Get Points</a>
+        <a href="see_prizes.html">See Prizes</a>
+    </div>
+
+    <div style="padding:20px">
+      <h3>Add Students Here!</h3>
+      <p>Please input the student name and grade to add them to the school!</p>
+    </div>
+
+    <form>
+      <label for="name">Student Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      
+      <label for="category">Category:</label>
+      <select id="category" name="category" onchange="showOptions()">
+        <option value="">-- Select a category --</option>
+        <option value="sporting">Sporting</option>
+        <option value="non-sporting">Non-sporting</option>
+        <option value="academic">Academic</option>
+      </select><br><br>
+      
+      <div id="options"></div>
+      
+      <button type="submit">Submit</button>
+    </form>
+    
+    <script>
+      function showOptions() {
+        const category = document.getElementById("category").value;
+        let options = "";
+        
+        switch (category) {
+          case "sporting":
+            options = `
+              <label for="activity">Activity:</label>
+              <select id="activity" name="activity">
+                <option value="">-- Select an activity --</option>
+                <option value="football">Football</option>
+                <option value="basketball">Basketball</option>
+                <option value="tennis">Tennis</option>
+              </select><br><br>
+            `;
+            break;
+            
+          case "non-sporting":
+            options = `
+              <label for="activity">Activity:</label>
+              <select id="activity" name="activity">
+                <option value="">-- Select an activity --</option>
+                <option value="school-dance">School Dance</option>
+                <option value="volunteering">Volunteering</option>
+                <option value="creative-arts">Creative Arts</option>
+              </select><br><br>
+            `;
+            break;
+            
+          case "academic":
+            options = `
+              <label for="activity">Activity:</label>
+              <select id="activity" name="activity">
+                <option value="">-- Select an activity --</option>
+                <option value="science-club">Science Club</option>
+                <option value="math-club">Math Club</option>
+                <option value="debate-club">Debate Club</option>
+              </select><br><br>
+            `;
+            break;
+            
+          default:
+            options = "";
+            break;
+        }
+        
+        document.getElementById("options").innerHTML = options;
+      }
+    </script>
+    
+
+    </script>
+    
+      
+      
+  </body>
+</html>

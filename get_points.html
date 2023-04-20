@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Get Points</title>
+    <style>
+      /* Style for the navigation bar */
+      .navbar {
+        overflow: hidden;
+        background-color: #333;
+      }
+      .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+      /* Style for the overall header */
+      .header {
+        background-color: #f1f1f1;
+        text-align: center;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Overall header -->
+    <div class="header">
+      <h1>Get Points</h1>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+      <a href="StudentInvolvementTracker.html">Home</a>
+      <a href="add_students.html">Add Students</a>
+      <a href="attend_activities.html">Attend Activities</a>
+      <a href="get_points.html">Get Points</a>
+      <a href="see_prizes.html">See Prizes</a>
+    </div>
+
+    <div style="padding:20px">
+        <h3>Add Students Here!</h3>
+        <p>Please input the student name and grade to add them to the school!</p>
+      </div>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="event-type">Event Type:</label>
+        <select id="event-type" name="event-type">
+          <option value="">Select an event type</option>
+          <option value="sporting">Sporting</option>
+          <option value="academic">Academic</option>
+          <option value="non-academic">Non-Academic</option>
+        </select><br><br>
+        
+        <div id="points" style="display:none;"></div>
+      </form>
+
+    <script>
+        document.getElementById("event-type").addEventListener("change", function() {
+  var eventType = document.getElementById("event-type").value;
+  var pointsDiv = document.getElementById("points");
+  
+  if (eventType === "sporting") {
+    pointsDiv.innerHTML = "<p>Points: 10</p>";
+  } else if (eventType === "academic") {
+    pointsDiv.innerHTML = "<p>Points: 20</p>";
+  } else if (eventType === "non-academic") {
+    pointsDiv.innerHTML = "<p>Points: 5</p>";
+  } else {
+    pointsDiv.innerHTML = "";
+  }
+  
+  if (eventType !== "") {
+    pointsDiv.style.display = "block";
+  } else {
+    pointsDiv.style.display = "none";
+  }
+});
+
+    </script>
+  </body>
+</html>
