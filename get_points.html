@@ -41,48 +41,66 @@
       <a href="attend_activities.html">Attend Activities</a>
       <a href="get_points.html">Get Points</a>
       <a href="see_prizes.html">See Prizes</a>
+      <a href="generate_report.html">Generate Report</a>
     </div>
 
+    <!-- Page instructions -->
     <div style="padding:20px">
-        <h3>Add Students Here!</h3>
-        <p>Please input the student name and grade to add them to the school!</p>
-      </div>
+        <h3>Get Student Points Here!</h3>
+        <p>Please input student name, then recieve the amount of points that they have collected so far!</p>
+    </div>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <!-- Form to get points -->
+    <title>Points Form</title>
+  </head>
+  <body>
     <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
-        
-        <label for="event-type">Event Type:</label>
-        <select id="event-type" name="event-type">
-          <option value="">Select an event type</option>
-          <option value="sporting">Sporting</option>
-          <option value="academic">Academic</option>
-          <option value="non-academic">Non-Academic</option>
-        </select><br><br>
-        
-        <div id="points" style="display:none;"></div>
-      </form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <br><br>
+      <button type="submit">Submit</button>
+    </form>
 
+    <p id="output"></p>
+
+    <!-- Determine points from inputted name -->
     <script>
-        document.getElementById("event-type").addEventListener("change", function() {
-  var eventType = document.getElementById("event-type").value;
-  var pointsDiv = document.getElementById("points");
-  
-  if (eventType === "sporting") {
-    pointsDiv.innerHTML = "<p>Points: 10</p>";
-  } else if (eventType === "academic") {
-    pointsDiv.innerHTML = "<p>Points: 20</p>";
-  } else if (eventType === "non-academic") {
-    pointsDiv.innerHTML = "<p>Points: 5</p>";
-  } else {
-    pointsDiv.innerHTML = "";
-  }
-  
-  if (eventType !== "") {
-    pointsDiv.style.display = "block";
-  } else {
-    pointsDiv.style.display = "none";
-  }
-});
+      document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.querySelector('#name').value;
+        let points = 0;
+
+        if (name === 'Vasudha Narayanan') {
+          points = 20;
+        } else if (name === 'Divij Aswinkumar') {
+          points = 5;
+        } else if(name === 'Rishi Dilip'){
+          points = 10;
+        }else if(name === 'John Doe'){
+            points = 15;
+        }else if(name === 'Jane Doe'){
+            points = 5;
+        }else{
+            points = 20;
+        }
+
+        const output = document.querySelector('#output');
+        output.textContent = `${name} Points: ${points}`;
+      });
+
+      // Clear output when the form is reset
+      document.querySelector('form').addEventListener('reset', function() {
+        const output = document.querySelector('#output');
+        output.textContent = '';
+      });
+    </script>
+  </body>
+</html>
+
+        
 
     </script>
   </body>

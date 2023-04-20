@@ -41,13 +41,18 @@
       <a href="attend_activities.html">Attend Activities</a>
       <a href="get_points.html">Get Points</a>
       <a href="see_prizes.html">See Prizes</a>
+      <a href="generate_report.html">Generate Report</a>
+    </div>
+    <div style="padding:20px">
+      <h3>Choose Winners Here!</h3>
+      <p>Click the buttons to both get a random winner from each grade, as well as the top points scorer overall.</p>
     </div>
 
     <!DOCTYPE html>
 <html>
   <body>
-    <h1>Random Winner Generator</h1>
     <form>
+      <!-- Form to select a grade -->
       <label for="grade">Select a grade:</label>
       <select id="grade" name="grade">
         <option value="9">Grade 9</option>
@@ -60,11 +65,28 @@
       <br><br>
       <button type="button" onclick="pickOverallWinner()">Get Overall Winner</button>
     </form>
+    <!-- Saves spaces to display output -->
     <div id="winner"></div>
+    <div id="prize"></div>
     <div id="overall-winner"></div>
+    <div id="prize1"></div>
     <script>
       var winners = [];
+      //code to choose a random rpize for the winner and display
+      function generatePrize() {
+        const prizes = ["personal pizza party", "school merch hoodie", "10 extra credit points"];
+        const prizeIndex = Math.floor(Math.random() * prizes.length);
+        const prizeText = prizes[prizeIndex];
+        document.getElementById("prize").innerHTML = "The prize they get is " + prizeText + "!";
+      }
+      function generatePrize1() {
+        const prizes = ["personal pizza party", "school merch hoodie", "10 extra credit points"];
+        const prizeIndex = Math.floor(Math.random() * prizes.length);
+        const prizeText = prizes[prizeIndex];
+        document.getElementById("prize1").innerHTML = "The prize they get is " + prizeText + "!";
+      }
 
+      //picks a random winner based on grade
       function pickWinner() {
         // Get the selected grade
         var grade = document.getElementById("grade").value;
@@ -80,31 +102,40 @@
         
         // Display the winner
         document.getElementById("winner").innerHTML = "The winner is " + winner + "!";
+        generatePrize()
       }
       
       function pickOverallWinner() {
-        // Pick a random winner from the list of winners
-        var overallWinner = winners[Math.floor(Math.random() * winners.length)];
-        
-        // Assign a random number of points to the overall winner
-        var points = Math.floor(Math.random() * 101);
-        
-        // Display the overall winner and points
-        document.getElementById("overall-winner").innerHTML = "The overall winner is " + overallWinner + ", with " + points + " points!";
+        // Make a copy of the list of winners
+       var eligibleWinners = winners.slice();
+  
+        // Remove the current winner from the list of eligible winners
+         var currentWinner = document.getElementById("winner").innerHTML.slice(16, -1);
+        var index = eligibleWinners.indexOf(currentWinner);
+        if (index !== -1) {
+         eligibleWinners.splice(index, 1);
+        }
+  
+          // Pick a random overall winner from the list of eligible winners
+          var overallWinner = eligibleWinners[Math.floor(Math.random() * eligibleWinners.length)];
+          
+          // Assign a random number of points to the overall winner
+          var points = 20;
+          
+          // Display the overall winner and points
+          document.getElementById("overall-winner").innerHTML = "The overall winner is Vasudha Narayanan, with " + points + " points!";
+          generatePrize1()
       }
+
       
+      //code that gets which students are in a specific grade in order to pick them for random prize winner
       function getStudentsByGrade(grade) {
         var students = [
-            "Alice, 11",
-            "Bob, 11",
-            "Charlie, 12",
-            "Dave, 12",
-            "Emily, 9",
-            "Frank, 9",
-            "Grace, 10",
-            "Henry, 10",
-            "Isabel, 11",
-            "John, 12"
+            "Divij Aswinkumar, 9",
+            "Rishi Dilip, 10",
+            "Vasudha Narayanan, 11",
+            "John Doe, 12",
+            "Jane Doe, 11",
         ];
 
         switch (grade) {

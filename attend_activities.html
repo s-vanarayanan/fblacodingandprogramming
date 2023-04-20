@@ -38,16 +38,19 @@
     <div class="navbar">
         <a href="StudentInvolvementTracker.html">Home</a>
         <a href="add_students.html">Add Students</a>
-        <a href="add_activities.html">Attend Activities</a>
+        <a href="attend_activities.html">Attend Activities</a>
         <a href="get_points.html">Get Points</a>
         <a href="see_prizes.html">See Prizes</a>
+        <a href="generate_report.html">Generate Report</a>
     </div>
 
+    <!-- Headhing -->
     <div style="padding:20px">
-      <h3>Add Students Here!</h3>
-      <p>Please input the student name and grade to add them to the school!</p>
+      <h3>Add Activites to Students Here!</h3>
+      <p>Please input the student name, then choose which activity that they attended.</p>
     </div>
 
+    <!-- Form to pick activity category -->
     <form>
       <label for="name">Student Name:</label>
       <input type="text" id="name" name="name"><br><br>
@@ -56,8 +59,8 @@
       <select id="category" name="category" onchange="showOptions()">
         <option value="">-- Select a category --</option>
         <option value="sporting">Sporting</option>
-        <option value="non-sporting">Non-sporting</option>
         <option value="academic">Academic</option>
+        <option value="non-academic">Non Academic</option>
       </select><br><br>
       
       <div id="options"></div>
@@ -65,11 +68,13 @@
       <button type="submit">Submit</button>
     </form>
     
+    <!-- based on category, shows options -->
     <script>
       function showOptions() {
         const category = document.getElementById("category").value;
         let options = "";
         
+        //sporting options
         switch (category) {
           case "sporting":
             options = `
@@ -79,11 +84,16 @@
                 <option value="football">Football</option>
                 <option value="basketball">Basketball</option>
                 <option value="tennis">Tennis</option>
+                <option value="soccer">Soccer</option>
+                <option value="golf">Golf</option>
+                <option value="track">Track</option>
+                <option value="volleyball">Volleyball</option>
               </select><br><br>
             `;
             break;
-            
-          case "non-sporting":
+          
+          //non academic options
+          case "non-academic":
             options = `
               <label for="activity">Activity:</label>
               <select id="activity" name="activity">
@@ -91,10 +101,15 @@
                 <option value="school-dance">School Dance</option>
                 <option value="volunteering">Volunteering</option>
                 <option value="creative-arts">Creative Arts</option>
+                <option value="talent-show">Talent Show</option>
+                <option value="open-mic">Open Mic</option>
+                <option value="school-play">School Plays</option>
+                <option value="movie-night">Movie Night</option>
               </select><br><br>
             `;
             break;
-            
+
+          //academic options
           case "academic":
             options = `
               <label for="activity">Activity:</label>
@@ -102,7 +117,11 @@
                 <option value="">-- Select an activity --</option>
                 <option value="science-club">Science Club</option>
                 <option value="math-club">Math Club</option>
-                <option value="debate-club">Debate Club</option>
+                <option value="fbla">FBLA</option>
+                <option value="writing-club">Writing Club</option>
+                <option value="history-project">History Project</option>
+                <option value="peer-tutoring">Peer Tutoring</option>
+                <option value="study-group">Study Group</option>
               </select><br><br>
             `;
             break;
