@@ -1,8 +1,6 @@
 User Guide:
-1)
-2)
-3)
-4)
-5)
-6)
-7)
+1)Starting on Home page, add preexisting students from the add students tab. This is done by adding the student name and grade and then clicking submit
+2)Next to add these students to the events they attend click on the attend activity tab in the navigation panel. To have a student attend an actviity first enter the students name and then select the category the student's activity falls under. These categories are sporting, academic, and non-academic. Once the category is selected a new dropdown will appear which gives the activities in that specific category. Select the activity desired and press submit.
+3)Next, to see how many points a student has click the Get Points tab in the navigation panel. To get the students points simply enter the student name and press submit
+4)To get the prizes for student click the See Prizes tab in the navigation panel. To randomly pick a prize for a student in a grade first select the grade from the drop down, then select Pick a Winner. A random student from that grade will be selected along with a random prize for them. To get the overall highest points student click Get Overall Winner button and results will be displayed.
+5)Finally, to generate the quarterly report click the Generate Report tab in the navigation panel. Simply click the button that says Click to Display Report and the report will be displayed.
